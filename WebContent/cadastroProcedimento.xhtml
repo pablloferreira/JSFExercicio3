@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+	
+<h:head>
+	<title>Cadastro de Procedimentos</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:commandLink value="Lista" action="listaProcedimento.xhtml" immediate="true" />
+		<h1>Cadastro</h1>
+		<h:messages />
+		<h:panelGrid columns="2">
+			<h:outputText value="Descrição do Procedimento: *" />
+			<h:inputText value="#{controleControllerPabllo.cont.descricao}"
+				required="true"
+				requiredMessage="O campo descrição é obrigatório!">
+				<f:validateLength minimum="3" maximum="60" />
+			</h:inputText>
+			<h:outputText value="Data Inicio do Procedimento: *" />
+			<h:inputText value="#{controleControllerPabllo.cont.dateInicio}"
+				required="true"
+				requiredMessage="O campo data inicio é obrigatório!">
+				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+			</h:inputText>
+			<h:outputText value="Data Final do Procedimento: *" />
+			<h:inputText value="#{controleControllerPabllo.cont.dateFinal}"
+				required="true"
+				requiredMessage="O campo data final é obrigatório!">
+				<f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo" />
+			</h:inputText>
+			<h:outputText value="Paciente: *" />
+			<h:inputText value="#{controleControllerPabllo.cont.paciente}"
+				required="true"
+				requiredMessage="O campo paciente é obrigátorio!">
+				<f:validateLength minimum="3" maximum="30" />
+			</h:inputText>
+			<h:outputText value="Quantidade de Exames: *" />
+			<h:inputText value="#{controleControllerPabllo.cont.qtExames}"
+				required="true"
+				requiredMessage="O campo quantidade é obrigatório!">
+				<f:validateLongRange minimum="2" maximum="99" />
+			</h:inputText>
+			<h:outputText value="Valor do procedimento: *" />
+            <h:inputText value="#{controleControllerPabllo.cont.valorProced}"
+                required="true"
+                requiredMessage="Valor do procedimento deve ser informado!">
+				<f:validateDoubleRange minimum="1" maximum="9000"/>
+                </h:inputText>	
+			<h:commandButton value="Salvar" action="#{controleControllerPabllo.salvar}" />
+			<h:commandButton value="Limpar" action="cadastroProcedimento.xhtml" 
+				actionListener="#{controleControllerPabllo.limparCampos}" immediate="true" />
+				
+		</h:panelGrid>
+	</h:form>
+</h:body>	
+	
+</html>
